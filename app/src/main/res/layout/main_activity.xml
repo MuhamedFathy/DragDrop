@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="viewModel"
+      type="com.dragdrop.ui.MainViewModel" />
+  </data>
+
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:theme="@style/AppTheme.AppBarOverlay">
+
+      <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:animateLayoutChanges="true"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
+      tools:context=".ui.MainActivity"
+      tools:showIn="@layout/main_activity">
+
+      <FrameLayout
+        android:id="@+id/dropPoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginStart="-1dp"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/grey_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+          android:id="@+id/dropText"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:fontFamily="@font/roboto"
+          android:padding="12dp"
+          android:text="@string/main_drop_clock_here"
+          android:textColor="@color/grey" />
+      </FrameLayout>
+
+      <FrameLayout
+        android:id="@+id/draggedTimeFrame"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="42dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+          android:id="@+id/squareFrame"
+          android:layout_width="120dp"
+          android:layout_height="120dp"
+          android:layout_gravity="center"
+          android:background="@drawable/blue_square" />
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:fontFamily="@font/roboto_bold"
+          android:padding="4dp"
+          android:text="@{ viewModel.time }"
+          android:textColor="@android:color/black" />
+      </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
